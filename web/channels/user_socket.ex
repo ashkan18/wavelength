@@ -2,7 +2,7 @@ defmodule Wavelength.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  channel "subscriptions", Wavelength.SubscriptionChannel
+  channel "artsy", Wavelength.SubscriptionChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

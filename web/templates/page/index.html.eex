@@ -1,4 +1,4 @@
 <div class="main-area">
-  <div id="messages"></div>
+  <ul id="messages"></ul>
 </div>
 

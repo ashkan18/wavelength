@@ -54,11 +54,11 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 socket.connect()
 
 // Now that you are connected, you can join channels with a topic:
-let channel = socket.channel("subscriptions", {})
-
+let moment = require('moment');
+let channel = socket.channel("artsy", {})
 let messagesContainer = $("#messages")
 channel.on("new", payload => {
-  messagesContainer.append(`<br/>[${Date()}] ${payload.model} ${payload.action} ${payload.note} By ${payload.user}`)
+  messagesContainer.prepend(`<li>${moment().format("LT")}: <a href=${payload.actor.link}>${payload.actor.display}</a> ${payload.action} <a href=${payload.subject.link}>${payload.subject.display}</a></li>`)
 })
 
 channel.join()

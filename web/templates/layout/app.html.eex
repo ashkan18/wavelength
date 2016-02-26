@@ -7,8 +7,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hello Wavelength!</title>
+    <title>Artsy Wavelength!</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="icon" href="<%= static_path(@conn, "/assets/favicon.ico") %>">
   </head>
 
   <body>

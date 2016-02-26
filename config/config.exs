@@ -29,5 +29,5 @@ config :phoenix, :generators,
   binary_id: false
 
 config :kafka_ex,
-  brokers: [{"localhost", 9092}],
+  brokers: [{"192.168.99.100", 9092}],
   sync_timeout: 1000 #Timeout used synchronous requests from kafka. Defaults to 1000ms.
