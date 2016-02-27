@@ -58,7 +58,8 @@ let moment = require('moment');
 let channel = socket.channel("artsy", {})
 let messagesContainer = $("#messages")
 channel.on("new", payload => {
-  messagesContainer.prepend(`<li>${moment().format("LT")}: <a href=${payload.actor.link}>${payload.actor.display}</a> ${payload.action} <a href=${payload.subject.link}>${payload.subject.display}</a></li>`)
+  let newItem = $(`<li class="news-item">${moment().format("LT")}: <a href=${payload.actor.link}>${payload.actor.display}</a> ${payload.action} <a href=${payload.subject.link}>${payload.subject.display}</a></li>`)
+  newItem.prependTo(messages).hide().slideDown()
 })
 
 channel.join()
