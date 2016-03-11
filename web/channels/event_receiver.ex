@@ -12,22 +12,17 @@ defmodule Wavelength.EventReceiver do
 
   def acceptable_message?(message) do
     try do
-      message = Poison.decode!(message)
-      IO.inspect message["attributes"]
-      is_map(message["attributes"])
+      Poison.decode!(message)
+        |> Map.get("attributes")
+        |> is_map
     rescue
       Poison.SyntaxError -> false
     end
   end
 
   def process_message(message) do
-    message = Poison.decode!(message.value)
-    action = message["attributes"]["action"]
-    type = message["attributes"]["type"]
-    display = message["attributes"]["display"]
-    id = message["attributes"]["key"]
-    modifier = message["attributes"]["modifier"]
-    modifier_display = message["attributes"]["modifier_display"]
-    %{action: action, type: type, id: id, display: display, modifier: modifier, modifier_display: modifier_display}
+    Poison.decode!(message.value)
+      |> Map.get("attributes")
+      |> Map.take(["action", "type", "id", "display", "modifier", "modifier_display"])
   end
 end
