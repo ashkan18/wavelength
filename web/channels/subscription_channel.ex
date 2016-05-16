@@ -5,8 +5,8 @@ defmodule Wavelength.SubscriptionChannel do
     {:ok, socket}
   end
 
-  def handle_in(topic, %{"model" => model, "action" => action, "user" => user, "note" => note}, socket) do
-    broadcast! socket, topic, %{model: model, action: action, user: user, note: note}
+  def handle_in(topic, %{"object" => object, "verb" => verb, "subject" => subject, "properties" => properties}, socket) do
+    broadcast! socket, topic, %{object: object, verb: verb, subject: subject, properties: properties}
     {:noreply, socket}
   end
 

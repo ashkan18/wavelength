@@ -19,7 +19,7 @@ defmodule Wavelength.Mixfile do
   def application do
     [mod: {Wavelength, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :kafka_ex]]
+                    :phoenix_ecto, :postgrex, :kafka_ex, :slack]]
   end
 
   # Specifies which paths to compile per environment.
@@ -37,7 +37,9 @@ defmodule Wavelength.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
-     {:kafka_ex, "~> 0.4.0"}]
+     {:kafka_ex, "~> 0.5.0"},
+     {:slack, "~> 0.5.0"},
+     {:websocket_client, git: "https://github.com/jeremyong/websocket_client"}]
   end
 
   # Aliases are shortcut or tasks specific to the current project.
