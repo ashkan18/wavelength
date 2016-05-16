@@ -22,18 +22,13 @@ form.link, form.button {
 .header {
   border-bottom: 1px solid #e5e5e5;
 }
+
 .logo {
   width: 100px;
-  height: 100px;
+  height: 40px;
   display: inline-block;
-  background-image: url("/images/logo.png");
-  background-size: 120px 120px;
-}
-
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header {
-  padding-right: 15px;
-  padding-left: 15px;
+  background-image: url("/images/APR.png");
+  background-size: 100px 40px;
 }
 
 /* Customize container */

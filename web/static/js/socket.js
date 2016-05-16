@@ -59,7 +59,7 @@ let channel = socket.channel("artsy", {})
 let messagesContainer = $("#messages")
 channel.on("new", payload => {
   console.table(payload)
-  let newItem = $(`<li class="news-item">${moment().format("LT")}: <a href=${payload.actor.id}>${payload.actor.display}</a> ${payload.action} <a href=${payload.subject.id}>${payload.subject.display} (${payload.subject.root_type})</a></li>`)
+  let newItem = $(`<li class="news-item">${moment().format("LT")}: ${payload.subject.display}</a> ${payload.verb} <a href=${payload.object.id}>${payload.obejct.display} (${payload.object.root_type})</a></li>`)
   newItem.prependTo(messages).hide().slideDown()
 })
 
