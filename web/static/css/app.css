@@ -25,10 +25,10 @@ form.link, form.button {
 
 .logo {
   width: 100px;
-  height: 40px;
+  height: 35px;
   display: inline-block;
   background-image: url("/images/APR.png");
-  background-size: 100px 40px;
+  background-size: 100px 35px;
 }
 
 /* Customize container */
