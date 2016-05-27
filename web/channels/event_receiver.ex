@@ -2,11 +2,15 @@ require IEx
 
 defmodule Wavelength.EventReceiver do
   require Logger
-  def start_link do
-    KafkaEx.create_worker(:streaming_worker)
-    for message <- KafkaEx.stream("subscriptions-test", 0, worker_name: :streaming_worker), acceptable_message?(message.value) do
+
+  alias Wavelength.Endpoint
+
+  def start_link(channel) do
+    KafkaEx.create_worker(String.to_atom(channel))
+    for message <- KafkaEx.stream(channel, 0, worker_name: String.to_atom(channel)), acceptable_message?(message.value) do
       proccessed_message = process_message message
-      Wavelength.Endpoint.broadcast("artsy", "new", proccessed_message)
+      # broadcast a message to a channel
+      Endpoint.broadcast(channel, proccessed_message.verb, proccessed_message)
     end
   end
 

@@ -13,7 +13,8 @@ defmodule Wavelength do
       supervisor(Wavelength.Repo, []),
       # Here you could define other workers and supervisors as children
       # worker(Wavelength.Worker, [arg1, arg2, arg3]),
-      worker(Wavelength.EventReceiver, [])
+      worker(Wavelength.EventReceiver, ["subscriptions"], [id: "subscriptions"]),
+      worker(Wavelength.EventReceiver, ["users"], [id: "users"])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
